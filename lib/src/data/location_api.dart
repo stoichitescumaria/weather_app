@@ -12,7 +12,6 @@ class LocationApi {
 
   Future<Location> getLocation() async {
     final Response response = await _client.get(Uri.parse(_apiUrl));
-    print(response);
     if (response.statusCode >= 300) {
       throw StateError(response.body);
     }
