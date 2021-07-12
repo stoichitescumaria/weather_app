@@ -1,9 +1,10 @@
 import 'package:movie_app/src/actions/get_location.dart';
+import 'package:movie_app/src/actions/get_weather.dart';
 import 'package:movie_app/src/models/app_state.dart';
 import 'package:redux/redux.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
-  TypedReducer<AppState, GetLocationSuccessful>(_getLocationSuccessful),
+  TypedReducer<AppState, GetWeatherSuccessful>(_getWeatherSuccessful),
   TypedReducer<AppState, GetLocation>(_getLocation),
 ]);
 AppState _getLocation(AppState state, GetLocation action) {
@@ -12,10 +13,10 @@ AppState _getLocation(AppState state, GetLocation action) {
   });
 }
 
-AppState _getLocationSuccessful(AppState state, GetLocationSuccessful action) {
+AppState _getWeatherSuccessful(AppState state, GetWeatherSuccessful action) {
   return state.rebuild((AppStateBuilder b) {
     b
-      ..location = action.location.toBuilder()
+      ..weather = action.weather.toBuilder()
       ..isLoading = false;
   });
 }

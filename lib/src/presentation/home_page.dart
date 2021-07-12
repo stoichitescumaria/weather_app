@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/container/is_loading_container.dart';
 import 'package:movie_app/src/container/weather_container.dart';
-import 'package:movie_app/src/models/location.dart';
+import 'package:movie_app/src/models/weather.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,8 +25,8 @@ class _HomePageState extends State<HomePage> {
             );
           }
           return WeatherContainer(
-            builder: (BuildContext context, Location location) {
-              return Text(location.city);
+            builder: (BuildContext context, Weather weather) {
+              return Text(weather.current!.temp.toString());
             },
           );
         },
