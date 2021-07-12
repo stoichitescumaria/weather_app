@@ -21,10 +21,7 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
     Object? value;
     value = object.current;
     if (value != null) {
-      result
-        ..add('current')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(Current)));
+      result..add('current')..add(serializers.serialize(value, specifiedType: const FullType(Current)));
     }
     return result;
   }
@@ -41,8 +38,7 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       final Object? value = iterator.current;
       switch (key) {
         case 'current':
-          result.current.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Current))! as Current);
+          result.current.replace(serializers.deserialize(value, specifiedType: const FullType(Current))! as Current);
           break;
       }
     }
@@ -55,14 +51,12 @@ class _$Weather extends Weather {
   @override
   final Current? current;
 
-  factory _$Weather([void Function(WeatherBuilder)? updates]) =>
-      (new WeatherBuilder()..update(updates)).build();
+  factory _$Weather([void Function(WeatherBuilder)? updates]) => (new WeatherBuilder()..update(updates)).build();
 
   _$Weather._({this.current}) : super._();
 
   @override
-  Weather rebuild(void Function(WeatherBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Weather rebuild(void Function(WeatherBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   WeatherBuilder toBuilder() => new WeatherBuilder()..replace(this);
@@ -80,8 +74,7 @@ class _$Weather extends Weather {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Weather')..add('current', current))
-        .toString();
+    return (newBuiltValueToStringHelper('Weather')..add('current', current)).toString();
   }
 }
 
@@ -125,8 +118,7 @@ class WeatherBuilder implements Builder<Weather, WeatherBuilder> {
         _$failedField = 'current';
         _current?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Weather', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError('Weather', _$failedField, e.toString());
       }
       rethrow;
     }

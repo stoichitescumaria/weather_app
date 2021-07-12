@@ -21,10 +21,7 @@ class _$CurrentSerializer implements StructuredSerializer<Current> {
     Object? value;
     value = object.temp;
     if (value != null) {
-      result
-        ..add('temp')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(double)));
+      result..add('temp')..add(serializers.serialize(value, specifiedType: const FullType(double)));
     }
     return result;
   }
@@ -41,8 +38,7 @@ class _$CurrentSerializer implements StructuredSerializer<Current> {
       final Object? value = iterator.current;
       switch (key) {
         case 'temp':
-          result.temp = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
+          result.temp = serializers.deserialize(value, specifiedType: const FullType(double)) as double?;
           break;
       }
     }
@@ -55,14 +51,12 @@ class _$Current extends Current {
   @override
   final double? temp;
 
-  factory _$Current([void Function(CurrentBuilder)? updates]) =>
-      (new CurrentBuilder()..update(updates)).build();
+  factory _$Current([void Function(CurrentBuilder)? updates]) => (new CurrentBuilder()..update(updates)).build();
 
   _$Current._({this.temp}) : super._();
 
   @override
-  Current rebuild(void Function(CurrentBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Current rebuild(void Function(CurrentBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   CurrentBuilder toBuilder() => new CurrentBuilder()..replace(this);
@@ -80,8 +74,7 @@ class _$Current extends Current {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Current')..add('temp', temp))
-        .toString();
+    return (newBuiltValueToStringHelper('Current')..add('temp', temp)).toString();
   }
 }
 
