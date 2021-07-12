@@ -4,9 +4,14 @@ import 'package:movie_app/src/models/app_state.dart';
 import 'package:redux/redux.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
+  (AppState state, dynamic action) {
+    print(action);
+    return state;
+  },
   TypedReducer<AppState, GetWeatherSuccessful>(_getWeatherSuccessful),
   TypedReducer<AppState, GetLocation>(_getLocation),
 ]);
+
 AppState _getLocation(AppState state, GetLocation action) {
   return state.rebuild((AppStateBuilder b) {
     b.isLoading = true;

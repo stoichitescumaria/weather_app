@@ -17,7 +17,6 @@ class AppMiddleware {
   List<Middleware<AppState>> get middleware {
     return <Middleware<AppState>>[
       TypedMiddleware<AppState, GetLocation>(_getLocation),
-      TypedMiddleware<AppState, GetLocationSuccessful>(_getLocationSuccessful),
       TypedMiddleware<AppState, GetWeather>(_getWeather),
     ];
   }
@@ -27,14 +26,10 @@ class AppMiddleware {
     try {
       final Location location = await _locationApi.getLocation();
       store.dispatch(GetLocationSuccessful(location));
+      store.dispatch(GetWeather(location.latitude, location.longitude));
     } catch (error) {
       store.dispatch(GetLocationError(error));
     }
-  }
-
-  Future<void> _getLocationSuccessful(Store<AppState> store, GetLocationSuccessful action, NextDispatcher next) async {
-    next(action);
-    store.dispatch(GetWeather(action.location.lat, action.location.lon));
   }
 
   Future<void> _getWeather(Store<AppState> store, GetWeather action, NextDispatcher next) async {

@@ -18,16 +18,10 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
   Iterable<Object?> serialize(Serializers serializers, Location object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'status',
-      serializers.serialize(object.status, specifiedType: const FullType(String)),
-      'country',
-      serializers.serialize(object.country, specifiedType: const FullType(String)),
-      'city',
-      serializers.serialize(object.city, specifiedType: const FullType(String)),
-      'lat',
-      serializers.serialize(object.lat, specifiedType: const FullType(double)),
-      'lon',
-      serializers.serialize(object.lon, specifiedType: const FullType(double)),
+      'latitude',
+      serializers.serialize(object.latitude, specifiedType: const FullType(double)),
+      'longitude',
+      serializers.serialize(object.longitude, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -44,20 +38,11 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'status':
-          result.status = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
+        case 'latitude':
+          result.latitude = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
           break;
-        case 'country':
-          result.country = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
-          break;
-        case 'city':
-          result.city = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
-          break;
-        case 'lat':
-          result.lat = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
-          break;
-        case 'lon':
-          result.lon = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
+        case 'longitude':
+          result.longitude = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -68,25 +53,15 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
 
 class _$Location extends Location {
   @override
-  final String status;
+  final double latitude;
   @override
-  final String country;
-  @override
-  final String city;
-  @override
-  final double lat;
-  @override
-  final double lon;
+  final double longitude;
 
   factory _$Location([void Function(LocationBuilder)? updates]) => (new LocationBuilder()..update(updates)).build();
 
-  _$Location._({required this.status, required this.country, required this.city, required this.lat, required this.lon})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(status, 'Location', 'status');
-    BuiltValueNullFieldError.checkNotNull(country, 'Location', 'country');
-    BuiltValueNullFieldError.checkNotNull(city, 'Location', 'city');
-    BuiltValueNullFieldError.checkNotNull(lat, 'Location', 'lat');
-    BuiltValueNullFieldError.checkNotNull(lon, 'Location', 'lon');
+  _$Location._({required this.latitude, required this.longitude}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(latitude, 'Location', 'latitude');
+    BuiltValueNullFieldError.checkNotNull(longitude, 'Location', 'longitude');
   }
 
   @override
@@ -98,65 +73,38 @@ class _$Location extends Location {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Location &&
-        status == other.status &&
-        country == other.country &&
-        city == other.city &&
-        lat == other.lat &&
-        lon == other.lon;
+    return other is Location && latitude == other.latitude && longitude == other.longitude;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc($jc($jc(0, status.hashCode), country.hashCode), city.hashCode), lat.hashCode), lon.hashCode));
+    return $jf($jc($jc(0, latitude.hashCode), longitude.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Location')
-          ..add('status', status)
-          ..add('country', country)
-          ..add('city', city)
-          ..add('lat', lat)
-          ..add('lon', lon))
-        .toString();
+    return (newBuiltValueToStringHelper('Location')..add('latitude', latitude)..add('longitude', longitude)).toString();
   }
 }
 
 class LocationBuilder implements Builder<Location, LocationBuilder> {
   _$Location? _$v;
 
-  String? _status;
-  String? get status => _$this._status;
-  set status(String? status) => _$this._status = status;
+  double? _latitude;
+  double? get latitude => _$this._latitude;
+  set latitude(double? latitude) => _$this._latitude = latitude;
 
-  String? _country;
-  String? get country => _$this._country;
-  set country(String? country) => _$this._country = country;
-
-  String? _city;
-  String? get city => _$this._city;
-  set city(String? city) => _$this._city = city;
-
-  double? _lat;
-  double? get lat => _$this._lat;
-  set lat(double? lat) => _$this._lat = lat;
-
-  double? _lon;
-  double? get lon => _$this._lon;
-  set lon(double? lon) => _$this._lon = lon;
+  double? _longitude;
+  double? get longitude => _$this._longitude;
+  set longitude(double? longitude) => _$this._longitude = longitude;
 
   LocationBuilder();
 
   LocationBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _status = $v.status;
-      _country = $v.country;
-      _city = $v.city;
-      _lat = $v.lat;
-      _lon = $v.lon;
+      _latitude = $v.latitude;
+      _longitude = $v.longitude;
       _$v = null;
     }
     return this;
@@ -177,11 +125,8 @@ class LocationBuilder implements Builder<Location, LocationBuilder> {
   _$Location build() {
     final _$result = _$v ??
         new _$Location._(
-            status: BuiltValueNullFieldError.checkNotNull(status, 'Location', 'status'),
-            country: BuiltValueNullFieldError.checkNotNull(country, 'Location', 'country'),
-            city: BuiltValueNullFieldError.checkNotNull(city, 'Location', 'city'),
-            lat: BuiltValueNullFieldError.checkNotNull(lat, 'Location', 'lat'),
-            lon: BuiltValueNullFieldError.checkNotNull(lon, 'Location', 'lon'));
+            latitude: BuiltValueNullFieldError.checkNotNull(latitude, 'Location', 'latitude'),
+            longitude: BuiltValueNullFieldError.checkNotNull(longitude, 'Location', 'longitude'));
     replace(_$result);
     return _$result;
   }

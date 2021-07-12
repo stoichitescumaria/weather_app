@@ -13,15 +13,9 @@ abstract class Location implements Built<Location, LocationBuilder> {
 
   Location._();
 
-  String get status;
+  double get latitude;
 
-  String get country;
-
-  String get city;
-
-  double get lat;
-
-  double get lon;
+  double get longitude;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this)! as Map<String, dynamic>;
 

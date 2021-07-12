@@ -12,7 +12,7 @@ import 'package:movie_app/src/reducer/reducer.dart';
 import 'package:redux/redux.dart';
 
 void main() {
-  const String url = 'http://ip-api.com/json/?fields=61439';
+  const String url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=2e1dec55c6a24b2bac0a220399448a85';
   const String key = '9d8908b6fc679375a473d1f80873bc46';
 
   final Client client = Client();
