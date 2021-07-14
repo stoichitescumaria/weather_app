@@ -21,11 +21,17 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
     Object? value;
     value = object.weather;
     if (value != null) {
-      result..add('weather')..add(serializers.serialize(value, specifiedType: const FullType(Weather)));
+      result
+        ..add('weather')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(Weather)));
     }
     value = object.isLoading;
     if (value != null) {
-      result..add('isLoading')..add(serializers.serialize(value, specifiedType: const FullType(bool)));
+      result
+        ..add('isLoading')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -42,10 +48,12 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       final Object? value = iterator.current;
       switch (key) {
         case 'weather':
-          result.weather.replace(serializers.deserialize(value, specifiedType: const FullType(Weather))! as Weather);
+          result.weather.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Weather))! as Weather);
           break;
         case 'isLoading':
-          result.isLoading = serializers.deserialize(value, specifiedType: const FullType(bool)) as bool?;
+          result.isLoading = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -60,12 +68,14 @@ class _$AppState extends AppState {
   @override
   final bool? isLoading;
 
-  factory _$AppState([void Function(AppStateBuilder)? updates]) => (new AppStateBuilder()..update(updates)).build();
+  factory _$AppState([void Function(AppStateBuilder)? updates]) =>
+      (new AppStateBuilder()..update(updates)).build();
 
   _$AppState._({this.weather, this.isLoading}) : super._();
 
   @override
-  AppState rebuild(void Function(AppStateBuilder) updates) => (toBuilder()..update(updates)).build();
+  AppState rebuild(void Function(AppStateBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
@@ -73,7 +83,9 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState && weather == other.weather && isLoading == other.isLoading;
+    return other is AppState &&
+        weather == other.weather &&
+        isLoading == other.isLoading;
   }
 
   @override
@@ -83,7 +95,10 @@ class _$AppState extends AppState {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AppState')..add('weather', weather)..add('isLoading', isLoading)).toString();
+    return (newBuiltValueToStringHelper('AppState')
+          ..add('weather', weather)
+          ..add('isLoading', isLoading))
+        .toString();
   }
 }
 
@@ -125,14 +140,16 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState build() {
     _$AppState _$result;
     try {
-      _$result = _$v ?? new _$AppState._(weather: _weather?.build(), isLoading: isLoading);
+      _$result = _$v ??
+          new _$AppState._(weather: _weather?.build(), isLoading: isLoading);
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'weather';
         _weather?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError('AppState', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError(
+            'AppState', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -141,4 +158,4 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

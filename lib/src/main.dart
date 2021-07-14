@@ -5,11 +5,12 @@ import 'package:http/http.dart';
 import 'package:movie_app/src/actions/get_location.dart';
 import 'package:movie_app/src/data/location_api.dart';
 import 'package:movie_app/src/data/weather_api.dart';
-import 'package:movie_app/src/middleware/app_middleware.dart';
+import 'package:movie_app/src/epic/epic.dart';
 import 'package:movie_app/src/models/app_state.dart';
 import 'package:movie_app/src/presentation/home_page.dart';
 import 'package:movie_app/src/reducer/reducer.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_epics/redux_epics.dart';
 
 void main() {
   const String url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=2e1dec55c6a24b2bac0a220399448a85';
@@ -19,12 +20,14 @@ void main() {
   final LocationApi locationApi = LocationApi(apiUrl: url, client: client);
   final WeatherApi weatherApi = WeatherApi(key: key, client: client);
 
-  final AppMiddleware middleware = AppMiddleware(locationApi: locationApi, weatherApi: weatherApi);
+  final AppEpic epic = AppEpic(locationApi: locationApi, weatherApi: weatherApi);
   final AppState initialState = AppState();
   final Store<AppState> store = Store<AppState>(
     reducer,
     initialState: initialState,
-    middleware: middleware.middleware,
+    middleware: <Middleware<AppState>>[
+      EpicMiddleware<AppState>(epic.epics),
+    ],
   );
   store.dispatch(const GetLocation());
   runApp(MyApp(store: store));

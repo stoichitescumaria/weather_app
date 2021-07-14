@@ -26,7 +26,8 @@ class _HomePageState extends State<HomePage> {
           }
           return WeatherContainer(
             builder: (BuildContext context, Weather weather) {
-              return Text(weather.current!.temp.toString());
+              final double temp = weather.current!.temp! - 274.15;
+              return Text(temp.toStringAsPrecision(3));
             },
           );
         },

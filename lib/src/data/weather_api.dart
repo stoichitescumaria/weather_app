@@ -13,7 +13,6 @@ class WeatherApi {
   Future<Weather> getWeather(double lat, double lon) async {
     final Response response = await _client.get(Uri.parse(
         'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=hourly,daily&appid=$_key'));
-    print(response);
     if (response.statusCode >= 300) {
       throw StateError(response.body);
     }
