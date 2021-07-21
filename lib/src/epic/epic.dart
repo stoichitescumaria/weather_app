@@ -23,7 +23,7 @@ class AppEpic {
     return actions
         .asyncMap((GetLocation event) => _locationApi.getLocation())
         .map<Object>((Location location) => GetLocationSuccessful(location))
-        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLocationError(error,stackTrace));
+        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLocationError(error, stackTrace));
   }
 
   Stream<Object> _getWeather(Stream<GetLocationSuccessful> actions, EpicStore<AppState> store) {
@@ -31,6 +31,6 @@ class AppEpic {
         .asyncMap(
             (GetLocationSuccessful event) => _weatherApi.getWeather(event.location.latitude, event.location.longitude))
         .map<Object>((Weather weather) => GetWeatherSuccessful(weather))
-        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetWeatherError(error,stackTrace));
+        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetWeatherError(error, stackTrace));
   }
 }

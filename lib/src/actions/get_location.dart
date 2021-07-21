@@ -1,4 +1,5 @@
 part of actions;
+
 @freezed
 class GetLocation with _$GetLocation implements AppAction {
   const factory GetLocation() = GetLocationStart;

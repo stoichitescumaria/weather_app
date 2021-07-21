@@ -1,4 +1,5 @@
 part of actions;
+
 @freezed
 class GetWeather with _$GetWeather implements AppAction {
   const factory GetWeather() = GetWeatherStart;

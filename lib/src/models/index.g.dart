@@ -24,17 +24,11 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
     Object? value;
     value = object.weather;
     if (value != null) {
-      result
-        ..add('weather')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(Weather)));
+      result..add('weather')..add(serializers.serialize(value, specifiedType: const FullType(Weather)));
     }
     value = object.isLoading;
     if (value != null) {
-      result
-        ..add('isLoading')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
+      result..add('isLoading')..add(serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -51,12 +45,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       final Object? value = iterator.current;
       switch (key) {
         case 'weather':
-          result.weather.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Weather))! as Weather);
+          result.weather.replace(serializers.deserialize(value, specifiedType: const FullType(Weather))! as Weather);
           break;
         case 'isLoading':
-          result.isLoading = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool?;
+          result.isLoading = serializers.deserialize(value, specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -78,10 +70,7 @@ class _$CurrentSerializer implements StructuredSerializer<Current> {
     Object? value;
     value = object.temp;
     if (value != null) {
-      result
-        ..add('temp')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(double)));
+      result..add('temp')..add(serializers.serialize(value, specifiedType: const FullType(double)));
     }
     return result;
   }
@@ -98,8 +87,7 @@ class _$CurrentSerializer implements StructuredSerializer<Current> {
       final Object? value = iterator.current;
       switch (key) {
         case 'temp':
-          result.temp = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
+          result.temp = serializers.deserialize(value, specifiedType: const FullType(double)) as double?;
           break;
       }
     }
@@ -119,11 +107,9 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'latitude',
-      serializers.serialize(object.latitude,
-          specifiedType: const FullType(double)),
+      serializers.serialize(object.latitude, specifiedType: const FullType(double)),
       'longitude',
-      serializers.serialize(object.longitude,
-          specifiedType: const FullType(double)),
+      serializers.serialize(object.longitude, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -141,12 +127,10 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       final Object? value = iterator.current;
       switch (key) {
         case 'latitude':
-          result.latitude = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+          result.latitude = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
           break;
         case 'longitude':
-          result.longitude = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+          result.longitude = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -168,10 +152,7 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
     Object? value;
     value = object.current;
     if (value != null) {
-      result
-        ..add('current')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(Current)));
+      result..add('current')..add(serializers.serialize(value, specifiedType: const FullType(Current)));
     }
     return result;
   }
@@ -188,8 +169,7 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       final Object? value = iterator.current;
       switch (key) {
         case 'current':
-          result.current.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Current))! as Current);
+          result.current.replace(serializers.deserialize(value, specifiedType: const FullType(Current))! as Current);
           break;
       }
     }
@@ -204,14 +184,12 @@ class _$AppState extends AppState {
   @override
   final bool? isLoading;
 
-  factory _$AppState([void Function(AppStateBuilder)? updates]) =>
-      (new AppStateBuilder()..update(updates)).build();
+  factory _$AppState([void Function(AppStateBuilder)? updates]) => (new AppStateBuilder()..update(updates)).build();
 
   _$AppState._({this.weather, this.isLoading}) : super._();
 
   @override
-  AppState rebuild(void Function(AppStateBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  AppState rebuild(void Function(AppStateBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
@@ -219,9 +197,7 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState &&
-        weather == other.weather &&
-        isLoading == other.isLoading;
+    return other is AppState && weather == other.weather && isLoading == other.isLoading;
   }
 
   @override
@@ -231,10 +207,7 @@ class _$AppState extends AppState {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AppState')
-          ..add('weather', weather)
-          ..add('isLoading', isLoading))
-        .toString();
+    return (newBuiltValueToStringHelper('AppState')..add('weather', weather)..add('isLoading', isLoading)).toString();
   }
 }
 
@@ -276,16 +249,14 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState build() {
     _$AppState _$result;
     try {
-      _$result = _$v ??
-          new _$AppState._(weather: _weather?.build(), isLoading: isLoading);
+      _$result = _$v ?? new _$AppState._(weather: _weather?.build(), isLoading: isLoading);
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'weather';
         _weather?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'AppState', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError('AppState', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -298,14 +269,12 @@ class _$Current extends Current {
   @override
   final double? temp;
 
-  factory _$Current([void Function(CurrentBuilder)? updates]) =>
-      (new CurrentBuilder()..update(updates)).build();
+  factory _$Current([void Function(CurrentBuilder)? updates]) => (new CurrentBuilder()..update(updates)).build();
 
   _$Current._({this.temp}) : super._();
 
   @override
-  Current rebuild(void Function(CurrentBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Current rebuild(void Function(CurrentBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   CurrentBuilder toBuilder() => new CurrentBuilder()..replace(this);
@@ -323,8 +292,7 @@ class _$Current extends Current {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Current')..add('temp', temp))
-        .toString();
+    return (newBuiltValueToStringHelper('Current')..add('temp', temp)).toString();
   }
 }
 
@@ -371,8 +339,7 @@ class _$Location extends Location {
   @override
   final double longitude;
 
-  factory _$Location([void Function(LocationBuilder)? updates]) =>
-      (new LocationBuilder()..update(updates)).build();
+  factory _$Location([void Function(LocationBuilder)? updates]) => (new LocationBuilder()..update(updates)).build();
 
   _$Location._({required this.latitude, required this.longitude}) : super._() {
     BuiltValueNullFieldError.checkNotNull(latitude, 'Location', 'latitude');
@@ -380,8 +347,7 @@ class _$Location extends Location {
   }
 
   @override
-  Location rebuild(void Function(LocationBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Location rebuild(void Function(LocationBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   LocationBuilder toBuilder() => new LocationBuilder()..replace(this);
@@ -389,9 +355,7 @@ class _$Location extends Location {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Location &&
-        latitude == other.latitude &&
-        longitude == other.longitude;
+    return other is Location && latitude == other.latitude && longitude == other.longitude;
   }
 
   @override
@@ -401,10 +365,7 @@ class _$Location extends Location {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Location')
-          ..add('latitude', latitude)
-          ..add('longitude', longitude))
-        .toString();
+    return (newBuiltValueToStringHelper('Location')..add('latitude', latitude)..add('longitude', longitude)).toString();
   }
 }
 
@@ -446,10 +407,8 @@ class LocationBuilder implements Builder<Location, LocationBuilder> {
   _$Location build() {
     final _$result = _$v ??
         new _$Location._(
-            latitude: BuiltValueNullFieldError.checkNotNull(
-                latitude, 'Location', 'latitude'),
-            longitude: BuiltValueNullFieldError.checkNotNull(
-                longitude, 'Location', 'longitude'));
+            latitude: BuiltValueNullFieldError.checkNotNull(latitude, 'Location', 'latitude'),
+            longitude: BuiltValueNullFieldError.checkNotNull(longitude, 'Location', 'longitude'));
     replace(_$result);
     return _$result;
   }
@@ -459,14 +418,12 @@ class _$Weather extends Weather {
   @override
   final Current? current;
 
-  factory _$Weather([void Function(WeatherBuilder)? updates]) =>
-      (new WeatherBuilder()..update(updates)).build();
+  factory _$Weather([void Function(WeatherBuilder)? updates]) => (new WeatherBuilder()..update(updates)).build();
 
   _$Weather._({this.current}) : super._();
 
   @override
-  Weather rebuild(void Function(WeatherBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Weather rebuild(void Function(WeatherBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   WeatherBuilder toBuilder() => new WeatherBuilder()..replace(this);
@@ -484,8 +441,7 @@ class _$Weather extends Weather {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Weather')..add('current', current))
-        .toString();
+    return (newBuiltValueToStringHelper('Weather')..add('current', current)).toString();
   }
 }
 
@@ -529,8 +485,7 @@ class WeatherBuilder implements Builder<Weather, WeatherBuilder> {
         _$failedField = 'current';
         _current?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Weather', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError('Weather', _$failedField, e.toString());
       }
       rethrow;
     }
