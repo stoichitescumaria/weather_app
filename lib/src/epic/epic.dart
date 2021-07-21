@@ -1,12 +1,9 @@
-import 'package:movie_app/src/actions/get_location.dart';
-import 'package:movie_app/src/actions/get_weather.dart';
-import 'package:movie_app/src/data/location_api.dart';
-import 'package:movie_app/src/data/weather_api.dart';
-import 'package:movie_app/src/models/app_state.dart';
-import 'package:movie_app/src/models/location.dart';
-import 'package:movie_app/src/models/weather.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:weather_app/src/actions/index.dart';
+import 'package:weather_app/src/data/location_api.dart';
+import 'package:weather_app/src/data/weather_api.dart';
+import 'package:weather_app/src/models/index.dart';
 
 class AppEpic {
   const AppEpic({required LocationApi locationApi, required WeatherApi weatherApi})
@@ -17,7 +14,7 @@ class AppEpic {
 
   Epic<AppState> get epics {
     return combineEpics(<Epic<AppState>>[
-      TypedEpic<AppState, GetLocation>(_getLocation),
+      TypedEpic<AppState, GetLocationStart>(_getLocation),
       TypedEpic<AppState, GetLocationSuccessful>(_getWeather),
     ]);
   }
@@ -26,7 +23,7 @@ class AppEpic {
     return actions
         .asyncMap((GetLocation event) => _locationApi.getLocation())
         .map<Object>((Location location) => GetLocationSuccessful(location))
-        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLocationError(error));
+        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLocationError(error,stackTrace));
   }
 
   Stream<Object> _getWeather(Stream<GetLocationSuccessful> actions, EpicStore<AppState> store) {
@@ -34,6 +31,6 @@ class AppEpic {
         .asyncMap(
             (GetLocationSuccessful event) => _weatherApi.getWeather(event.location.latitude, event.location.longitude))
         .map<Object>((Weather weather) => GetWeatherSuccessful(weather))
-        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetWeatherError(error));
+        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetWeatherError(error,stackTrace));
   }
 }

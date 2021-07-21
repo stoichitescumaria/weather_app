@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:movie_app/src/models/app_state.dart';
+import 'package:weather_app/src/models/index.dart';
 import 'package:redux/redux.dart';
 
 class IsLoadingContainer extends StatelessWidget {

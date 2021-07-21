@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:movie_app/src/models/weather.dart';
+import 'package:weather_app/src/models/index.dart';
 
 class WeatherApi {
   const WeatherApi({required String key, required Client client})

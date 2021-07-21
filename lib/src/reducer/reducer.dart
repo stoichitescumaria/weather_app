@@ -1,6 +1,5 @@
-import 'package:movie_app/src/actions/get_location.dart';
-import 'package:movie_app/src/actions/get_weather.dart';
-import 'package:movie_app/src/models/app_state.dart';
+import 'package:weather_app/src/actions/index.dart';
+import 'package:weather_app/src/models/index.dart';
 import 'package:redux/redux.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[

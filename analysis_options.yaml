@@ -13,6 +13,7 @@ analyzer:
     - "bin/cache/**"
     - "dev/conductor/lib/proto/*"
     - "lib/**/*.g.dart"
+    - "lib/**/*.freezed.dart"
 
 linter:
   rules:
